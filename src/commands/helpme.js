@@ -10,7 +10,7 @@ console.log(redis.toString())
 const controller = Botkit.slackbot({
   debug: true,
   logLevel: 7,
-  storage: redis
+  storage: redis.config
 })
 
 
