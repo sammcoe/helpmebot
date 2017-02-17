@@ -8,7 +8,7 @@ const Botkit = require('botkit')
 const redis = require('botkit-storage-redis')
 console.log(redis)
 const controller = Botkit.slackbot({
-  logLevel: 7
+  logLevel: 7,
   storage: redis
 })
 
