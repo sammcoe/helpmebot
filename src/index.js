@@ -45,7 +45,7 @@ app.post('/commands/helpmebot', (req, res) => {
 app.listen(config('PORT'), (err) => {
   if (err) throw err
 
-  console.log(`\n🚀  Starbot LIVES on PORT ${config('PORT')} 🚀`)
+  console.log(`\n🚀  Help Bot LIVES on PORT ${config('PORT')} 🚀`)
 
   if (config('SLACK_TOKEN')) {
     console.log(`🤖  beep boop: @helpmebot is real-time\n`)
