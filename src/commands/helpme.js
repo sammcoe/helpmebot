@@ -4,8 +4,9 @@
 const _ = require('lodash')
 const config = require('../config')
 const Botkit = require('botkit')
-const redis = require('botkit-storage-redis')
 
+const redis = require('botkit-storage-redis')
+console.log(redis)
 const controller = Botkit.slackbot({
   storage: redis
 })
