@@ -35,11 +35,13 @@ app.post('/commands/helpmebot', (req, res) => {
     return
   }
 
-  let cmd = _.reduce(commands, (a, cmd) => {
-    return payload.text.match(cmd.pattern) ? cmd : a
-  }, helpCommand)
+  helpme.handler(payload, res)
 
-  cmd.handler(payload, res)
+  //let cmd = _.reduce(commands, (a, cmd) => {
+  //  return payload.text.match(cmd.pattern) ? cmd : a
+  //}, helpCommand)
+  //
+  //cmd.handler(payload, res)
 })
 
 app.listen(config('PORT'), (err) => {
