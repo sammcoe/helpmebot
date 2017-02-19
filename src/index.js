@@ -8,6 +8,7 @@ const _ = require('lodash')
 const config = require('./config')
 const commands = require('./commands')
 const helpCommand = require('./commands/help')
+const newRequest = require('./commands/helpme')
 
 let bot = require('./bot')
 
@@ -26,7 +27,7 @@ app.get('/', (req, res) => { res.send('\n 👋 🌍 \n') })
 
 app.post('/commands/helpmebot', (req, res) => {
   let payload = req.body
-  console.log("Help req received.")
+ 
   if (!payload || payload.token !== config('HELPMEBOT_COMMAND_TOKEN')) {
     let err = '✋  Help—what? An invalid slash token was provided\n' +
               '   Is your Slack slash token correctly configured?'
@@ -37,7 +38,7 @@ app.post('/commands/helpmebot', (req, res) => {
 
   let cmd = _.reduce(commands, (a, cmd) => {
     return payload.text.match(cmd.pattern) ? cmd : a
-  }, helpCommand)
+  }, newRequest)
   
   cmd.handler(payload, res)
 })
