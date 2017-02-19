@@ -27,6 +27,7 @@ const handler = (payload, res) => {
   console.log(helpReq)
   controller.storage.channels.save(helpReq);
     
+  const msg = "Help request received!"
   res.set('content-type', 'application/json')
   res.status(200).json(msg)
   return
