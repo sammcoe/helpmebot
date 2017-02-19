@@ -23,7 +23,7 @@ const msgDefaults = {
 const handler = (payload, res) => {
 
   // Create a help event with payload
-  var helpReq = {id: payload.channel, request: payload.text}
+  var helpReq = {id: payload.channel_id, request: payload.text}
   console.log(helpReq)
   controller.storage.channels.save(helpReq);
     
