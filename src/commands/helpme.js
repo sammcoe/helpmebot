@@ -5,7 +5,7 @@ const _ = require('lodash')
 const config = require('../config')
 const Botkit = require('botkit')
 const redis = require('botkit-storage-redis')(config('REDIS_URL'))
-console.log(redis.toString())
+console.log("Redis client object: " + redis.toString())
 
 const msgDefaults = {
   response_type: 'in_channel',
@@ -14,13 +14,19 @@ const msgDefaults = {
 }
 
 const handler = (payload, res) => {
-  var controller = Botkit.slackbot({
+  
+  const controller = Botkit.slackbot({
     debug: true,
     storage: redis
   })
+
+  const url_array = payload.response_url.split('/')
+  const id = url_array[url_array.length() - 1]
+  console.log("Unique request ID:" + id)
+
   // Create a help event with payload
-  var helpReq = {id: payload.channel_id, request: payload.text}
-  console.log(helpReq)
+  const helpReq = {id: payload.channel_id, request: payload.text}
+  console.log("Help request: " + helpReq)
   controller.storage.channels.save(helpReq);
     
   const msg = "Help request received!"
