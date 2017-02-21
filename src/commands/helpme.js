@@ -4,7 +4,7 @@
 const _ = require('lodash')
 const config = require('../config')
 const Botkit = require('botkit')
-const redis = require('botkit-storage-redis')()
+const redis = require('botkit-storage-redis')(config('REDIS_URL'))
 console.log(redis.toString())
 
 const msgDefaults = {
