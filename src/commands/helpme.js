@@ -4,7 +4,7 @@
 const _ = require('lodash')
 const config = require('../config')
 const Botkit = require('botkit')
-const redis = require('botkit-storage-redis')(config('REDIS_URL'))
+const redis = require('botkit-storage-redis')(config('REDIS_URL'), {namespace: "helpme"})
 console.log("Redis client object: " + redis.toString())
 
 const msgDefaults = {
@@ -27,7 +27,6 @@ const handler = (payload, res) => {
   // Create a help event with payload
   const helpReq = {id: payload.channel_id, request: payload.text}
   console.log("Help request: " + helpReq)
-  console.log(controller.storage.channels.save.toString())
   controller.storage.channels.save(helpReq);
     
   const msg = "Help request received!"
