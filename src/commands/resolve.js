@@ -20,11 +20,13 @@ const handler = (payload, res) => {
     storage: redis
   })
 
+  const id = payload.text.split(" ")[1]
+
   // Resolve help request with given ID
-  console.log("Resolve request: " + payload.text)
-  controller.storage.channels.delete(payload.text);
+  console.log("Resolve request: " + id)
+  controller.storage.channels.delete(id);
     
-  const msg = "Request ID " + payload.text + " has been resolved!"
+  const msg = "Request ID " + id + " has been resolved!"
   res.set('content-type', 'application/json')
   res.status(200).json(msg)
   return
