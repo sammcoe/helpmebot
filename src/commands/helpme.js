@@ -7,13 +7,6 @@ const Botkit = require('botkit')
 const redis = require('botkit-storage-redis')
 //console.log(redis.toString())
 
-var controller = Botkit.slackbot({
-  debug: true,
-  logLevel: 7,
-  storage: redis.config
-})
-
-
 const msgDefaults = {
   response_type: 'in_channel',
   username: 'helpbot',
@@ -21,7 +14,10 @@ const msgDefaults = {
 }
 
 const handler = (payload, res) => {
-
+  var controller = Botkit.slackbot({
+    debug: true,
+    storage: redis.config
+  })
   // Create a help event with payload
   var helpReq = {id: payload.channel_id, request: payload.text}
   //console.log(helpReq)
