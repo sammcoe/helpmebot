@@ -20,19 +20,14 @@ const handler = (payload, res) => {
     storage: redis
   })
 
-  const url_array = payload.response_url.split('/')
-  const id = url_array[url_array.length - 1]
-  console.log("Unique request ID:" + id)
-
-  // Create a help event with payload
-  const helpReq = {id: id, channel_id: payload.channel_id, request: payload.text}
-  console.log("Help request: " + helpReq)
-  controller.storage.channels.save(helpReq);
+  // Resolve help request with given ID
+  console.log("Resolve request: " + payload.text)
+  controller.storage.channels.delete(payload.text);
     
-  const msg = "Help request received for '" + payload.text + "'\nYour request ID is " + id
+  const msg = "Request ID " + payload.text + " has been resolved!"
   res.set('content-type', 'application/json')
   res.status(200).json(msg)
   return
 }
 
-module.exports = { pattern: /helpme/ig, handler: handler }
+module.exports = { pattern: /resolve/ig, handler: handler }

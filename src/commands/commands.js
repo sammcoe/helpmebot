@@ -14,13 +14,13 @@ let attachments = [
   {
     title: "Help Bot will assit you in getting help from real people. Not that Help Bot isn't a real people.",
     color: '#2FA44F',
-    text: '`/helpme [request]` logs a request for help, and will post a reminder every 15 minutes',
+    text: '`/helpme [request]` logs a request for help, and will post a reminder every 10 minutes',
     mrkdwn_in: ['text']
   },
   {
     title: 'Configuring Help Bot',
     color: '#E3E4E6',
-    text: '`/helpme help` ... you\'re lookin at it! \n',
+    text: '`/helpme commands` ... you\'re lookin at it! \n',
     mrkdwn_in: ['text']
   }
 ]
@@ -36,4 +36,4 @@ const handler = (payload, res) => {
   return
 }
 
-module.exports = { pattern: /help/ig, handler: handler }
+module.exports = { pattern: /commands/ig, handler: handler }
