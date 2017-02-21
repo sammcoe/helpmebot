@@ -25,7 +25,7 @@ const handler = (payload, res) => {
   console.log("Unique request ID:" + id)
 
   // Create a help event with payload
-  const helpReq = {id: payload.channel_id, request: payload.text}
+  const helpReq = {id: id, channel_id = payload.channel_id, request: payload.text}
   console.log("Help request: " + helpReq)
   controller.storage.channels.save(helpReq);
     
