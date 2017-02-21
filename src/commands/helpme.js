@@ -29,7 +29,7 @@ const handler = (payload, res) => {
   console.log("Help request: " + helpReq)
   controller.storage.channels.save(helpReq);
     
-  const msg = "Help request received for '" + payload.text + "'\nYour request ID is " + id
+  const msg = 'Help request received for "' + payload.text + '"\nYour request ID is ' + id
   res.set('content-type', 'application/json')
   res.status(200).json(msg)
   return
