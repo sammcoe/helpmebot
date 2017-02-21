@@ -20,7 +20,7 @@ const handler = (payload, res) => {
   })
   // Create a help event with payload
   var helpReq = {id: payload.channel_id, request: payload.text}
-  //console.log(helpReq)
+  console.log(helpReq)
   controller.storage.channels.save(helpReq);
     
   const msg = "Help request received!"
