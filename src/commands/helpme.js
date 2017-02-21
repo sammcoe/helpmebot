@@ -21,8 +21,7 @@ const handler = (payload, res) => {
   })
 
   const url_array = payload.response_url.split('/')
-  console.log("URL Array: " + url_array)
-  const id = url_array[url_array.length() - 1]
+  const id = url_array[url_array.length - 1]
   console.log("Unique request ID:" + id)
 
   // Create a help event with payload
